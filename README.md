@@ -1,7 +1,7 @@
 # Convert
 A collection of tools for converting between various formats written in Go
 
-##csv2xlsx
+## csv2xlsx
 Reads a csv and writes it to an xlsx. Tries to detect utf-16 as well.
 ```
 $ ./csv2xlsx -h
