@@ -125,7 +125,7 @@ func EncHandle (fhandle io.Reader) (io.Reader, error) {
             dec := unicode.UTF16(unicode.LittleEndian, unicode.UseBOM).NewDecoder()
             return transform.NewReader(buf, dec), nil
         //UTF-16-be-like with no bom
-        case head[0] != 0x00 && head[1] == 0x00:
+        case head[0] == 0x00 && head[1] != 0x00:
             log.Println("Assuming utf-16-LE")
             fallthrough
         //UTF-16-be with bom
