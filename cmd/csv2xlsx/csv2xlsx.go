@@ -55,6 +55,9 @@ func main() {
 
     csvReader := csv.NewReader(enc)
 
+    //Allows variable number of fields
+    csvReader.FieldsPerRecord = -1
+
     xlsxFile := xlsx.NewFile()
     xlsxSheet, err := xlsxFile.AddSheet("Sheet")
     if err != nil {
