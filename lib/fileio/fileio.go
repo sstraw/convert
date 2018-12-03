@@ -34,7 +34,12 @@ func OpenOutput (fname *string, force *bool) (*os.File, error) {
     }
 
     if *force {
-        return os.OpenFile(*fname, os.O_RDWR | os.O_CREATE, 0666)
+        f, err := os.OpenFile(*fname, os.O_RDWR | os.O_CREATE, 0666)
+        if err != nil {
+            return f, err
+        }
+        err = f.Truncate(0)
+        return f, err
     }
 
     return os.OpenFile(*fname, os.O_RDWR | os.O_CREATE | os.O_EXCL, 0666)

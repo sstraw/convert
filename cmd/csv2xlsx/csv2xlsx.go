@@ -7,7 +7,7 @@ import (
     "encoding/csv"
     "flag"
 
-    "github.com/tealeg/xlsx"
+//    "github.com/tealeg/xlsx"
     "github.com/sstraw/convert/lib/fileio"
 )
 
@@ -58,11 +58,12 @@ func main() {
     //Allows variable number of fields
     csvReader.FieldsPerRecord = -1
 
-    xlsxFile := xlsx.NewFile()
-    xlsxSheet, err := xlsxFile.AddSheet("Sheet")
-    if err != nil {
+    xlsxStream, err := fileio.NewStream(fout, "sheet")
+    if  err != nil {
         log.Fatal(err)
     }
+    defer xlsxStream.Close()
+
     for {
         fields, err := csvReader.Read()
         if err == io.EOF {
@@ -72,10 +73,10 @@ func main() {
             log.Fatal(err)
         }
 
-        row := xlsxSheet.AddRow()
-        _ = row.WriteSlice(&fields, -1) //-1 writes all fields
+        if err := xlsxStream.WriteRow(fields); err != nil {
+            log.Fatal(err)
+        }
     }
-    err = xlsxFile.Write(fout)
     if err != nil {
         log.Println(err)
     }
