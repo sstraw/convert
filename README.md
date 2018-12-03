@@ -17,10 +17,7 @@ Usage of ./csv2xlsx:
 
 I used the following as reference when developing the xlsx creator.
 
-*https://docs.microsoft.com/en-us/office/open-xml/structure-of-a-spreadsheetml-document
-
-*https://www.loc.gov/preservation/digital/formats/fdd/fdd000398.shtml
-
-*http://officeopenxml.com/anatomyofOOXML-xlsx.php
-
+* https://docs.microsoft.com/en-us/office/open-xml/structure-of-a-spreadsheetml-document
+* https://www.loc.gov/preservation/digital/formats/fdd/fdd000398.shtml
+* http://officeopenxml.com/anatomyofOOXML-xlsx.php
 * http://officeopenxml.com/SScontentOverview.php
